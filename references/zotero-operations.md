@@ -1,0 +1,8 @@
+# Zotero operations
+
+Use the available connector or API and follow its live schema. Check support for reading the target collection, creating or updating parent items, importing managed PDFs, and reading children. If write or attachment import support is absent, produce a dry run or a verified attachment handoff for the missing operation.
+
+- Verify identifiers and creators before creating a parent. If a write fails or times out, check job status when available and reread the affected records. For an attachment, check the parent's children and file bytes. Retry only after confirming the original write did not land and is no longer pending. Record an uncertain outcome as unresolved.
+- When a verified PDF is already attached, reuse it. For a new managed attachment, use the local file path or upload mechanism required by the active tool. Reread the child and verify parent, attachment mode, media type, and retrievable PDF content. A linked path alone is insufficient to verify a managed import.
+- Use the collection's existing tag conventions. If no convention exists and access tags are requested, use one access-state tag per item. Suggested states are `#access/pdf` for a verified managed PDF, `#access/manual` when user action is needed, and `#access/failed` when retrieval or verification failed. Preserve unrelated tags. Clear stale access tags only when the new state is verified.
+- Page through collection results before comparing counts. Check creators, identifiers, memberships, child-parent links, and tags independently. Keep a before/after record for the affected items. Use supported Zotero operations for repairs and rollback.

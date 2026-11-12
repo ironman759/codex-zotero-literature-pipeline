@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Zotero Literature Pipeline"
+  short_description: "Search, verify, and archive project literature"
+  default_prompt: "Use $codex-zotero-literature-pipeline to build or repair my Zotero project collection."
